@@ -11,6 +11,7 @@ def type_flag
   return '-int' if new_resource.integer
   return '-string' if new_resource.string
   return '-float' if new_resource.float
+  return '-array' if new_resource.array
   return '-boolean' unless new_resource.boolean.nil?
   ''
 end
@@ -19,5 +20,6 @@ def value
   new_resource.integer ||
     new_resource.string ||
     (new_resource.float && new_resource.float.to_f) ||
+    new_resource.array ||
     new_resource.boolean
 end
